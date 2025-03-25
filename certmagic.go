@@ -150,8 +150,24 @@ func HTTPS(domainNames []string, mux http.Handler) error {
 	log.Printf("%v Serving HTTP->HTTPS on %s and %s",
 		domainNames, hln.Addr(), hsln.Addr())
 
+	h1 = httpServer
+	h2 = httpsServer
+
 	go httpServer.Serve(hln)
 	return httpsServer.Serve(hsln)
+}
+
+var (
+	h1, h2 *http.Server
+)
+
+func Shutdown() {
+	if h1 != nil {
+		h1.Shutdown(context.Background())
+	}
+	if h2 != nil {
+		h2.Shutdown(context.Background())
+	}
 }
 
 func httpRedirectHandler(w http.ResponseWriter, r *http.Request) {
@@ -268,8 +284,7 @@ type OnDemandConfig struct {
 	// If set, this function will be called to determine
 	// whether a certificate can be obtained or renewed
 	// for the given name. If an error is returned, the
-	// request will be denied. IDNs will be given as
-	// punycode.
+	// request will be denied.
 	DecisionFunc func(ctx context.Context, name string) error
 
 	// Sources for getting new, unmanaged certificates.
