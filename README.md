@@ -1,5 +1,7 @@
-<p>The original repository is https://github.com/caddyserver/certmagic, by Matthew Holt. Please go there for the latest and greatest. 
-This copy is just for adding one single function, and that is certmagic.Shutdown().local</p>
+The original repository is https://github.com/caddyserver/certmagic, by Matthew Holt. Please go there for the latest and greatest. 
+This copy is just for adding one single function, and that is certmagic.Shutdown().
+
+<br><br>
 
 <p align="center">
 	<a href="https://pkg.go.dev/github.com/caddyserver/certmagic?tab=doc"><img src="https://user-images.githubusercontent.com/1128849/49704830-49d37200-fbd5-11e8-8385-767e0cd033c3.png" alt="CertMagic" width="550"></a>
