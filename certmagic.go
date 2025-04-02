@@ -163,9 +163,11 @@ var (
 
 func Shutdown() {
 	if h1 != nil {
+		log.Println("Shutting down server h1")
 		h1.Shutdown(context.Background())
 	}
 	if h2 != nil {
+		log.Println("Shutting down server h2")
 		h2.Shutdown(context.Background())
 	}
 }
